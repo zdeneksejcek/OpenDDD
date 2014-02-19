@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{91D852C5-699D-4083-BC92-E3FE51E686A7}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>OpenDDD</RootNamespace>
+    <AssemblyName>OpenDDD</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Messaging" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Aggregate.cs" />
+    <Compile Include="Application.cs" />
+    <Compile Include="AssertionConcern.cs" />
+    <Compile Include="BoundedContext.cs" />
+    <Compile Include="DomainException.cs" />
+    <Compile Include="DomainExceptionHasBeenThrown.cs" />
+    <Compile Include="Entity.cs" />
+    <Compile Include="Event.cs" />
+    <Compile Include="EventDispacher.cs" />
+    <Compile Include="EventDispacherDisabler.cs" />
+    <Compile Include="EventFinder.cs" />
+    <Compile Include="NonTransactionalEventHandler.cs" />
+    <Compile Include="TransactionalEventHandler.cs" />
+    <Compile Include="EventQueue\EventQueueFactory.cs" />
+    <Compile Include="EventQueue\IEventQueue.cs" />
+    <Compile Include="EventQueue\InHttpRequestEventQueue.cs" />
+    <Compile Include="EventQueue\InThreadEventQueue.cs" />
+    <Compile Include="EventRegistry.cs" />
+    <Compile Include="IApplicationService.cs" />
+    <Compile Include="IDomainService.cs" />
+    <Compile Include="IEventListener.cs" />
+    <Compile Include="IoC.cs" />
+    <Compile Include="IRepository.cs" />
+    <Compile Include="Messaging\IMessageQueue.cs" />
+    <Compile Include="Messaging\InMemoryMessageQueue.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UnitOfWork.cs" />
+    <Compile Include="UnitOfWorkContext\InHttpContextStack.cs" />
+    <Compile Include="UnitOfWorkContext\InThreadStack.cs" />
+    <Compile Include="UnitOfWorkContext\IStack.cs" />
+    <Compile Include="UnitOfWorkContext\StackFactory.cs" />
+    <Compile Include="UnitOfWorkContext\UnitOfWorkStack.cs" />
+    <Compile Include="ValueObject.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Configuration\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

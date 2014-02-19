@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenDDD", "OpenDDD\OpenDDD.csproj", "{91D852C5-699D-4083-BC92-E3FE51E686A7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenDDD.Tests", "OpenDDD.Tests\OpenDDD.Tests.csproj", "{246712A1-045C-4B14-800D-C8F7225A6CB1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenDDD.Common", "OpenDDD.Common\OpenDDD.Common.csproj", "{410F486E-8701-4457-BBE2-FB3A34053A83}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{91D852C5-699D-4083-BC92-E3FE51E686A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91D852C5-699D-4083-BC92-E3FE51E686A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91D852C5-699D-4083-BC92-E3FE51E686A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91D852C5-699D-4083-BC92-E3FE51E686A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{246712A1-045C-4B14-800D-C8F7225A6CB1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{246712A1-045C-4B14-800D-C8F7225A6CB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{246712A1-045C-4B14-800D-C8F7225A6CB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{246712A1-045C-4B14-800D-C8F7225A6CB1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{410F486E-8701-4457-BBE2-FB3A34053A83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{410F486E-8701-4457-BBE2-FB3A34053A83}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{410F486E-8701-4457-BBE2-FB3A34053A83}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{410F486E-8701-4457-BBE2-FB3A34053A83}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
