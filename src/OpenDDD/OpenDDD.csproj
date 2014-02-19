@@ -46,6 +46,12 @@
     <Compile Include="Application.cs" />
     <Compile Include="AssertionConcern.cs" />
     <Compile Include="BoundedContext.cs" />
+    <Compile Include="Common\Currency.cs" />
+    <Compile Include="Common\DateTimeUtc.cs" />
+    <Compile Include="Common\EmailValueObject.cs" />
+    <Compile Include="Common\GenericValueObject.cs" />
+    <Compile Include="Common\IdValueObject.cs" />
+    <Compile Include="Common\MonetaryValue.cs" />
     <Compile Include="DomainException.cs" />
     <Compile Include="DomainExceptionHasBeenThrown.cs" />
     <Compile Include="Entity.cs" />
