@@ -8,11 +8,11 @@ namespace OpenDDD
     {
         private static List<TypeHandleTuple> Listeners = new List<TypeHandleTuple>();
 
-        public static void Register<T>(NonTransactionalEventHandler<T> listener) where T : Event
+        public static void Register<T>(INonTransactionalEventHandler<T> listener) where T : Event
         {
             var type = GetGenericType(listener);
 
-            Listeners.Add(new TypeHandleTuple(type, @event => listener.HandleEvent(@event as T)));
+            Listeners.Add(new TypeHandleTuple(type, @event => listener.Handle(@event as T)));
         }
 
         private static Type GetGenericType(object obj)

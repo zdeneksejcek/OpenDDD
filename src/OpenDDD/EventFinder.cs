@@ -6,11 +6,13 @@ namespace OpenDDD
 {
     public class EventFinder
     {
-        public static IEnumerable<IEventListener> FindAllInAssembly(Assembly assembly)
+        public static IEnumerable<Type> FindAllInAssembly(Assembly assembly)
         {
-            foreach (var type in assembly.ExportedTypes)
-                if (typeof (IEventListener).IsAssignableFrom(type))
-                    yield return Activator.CreateInstance(type) as IEventListener;
+            //foreach (var type in assembly.ExportedTypes)
+            //    if (typeof (IEventListener).IsAssignableFrom(type))
+            //        yield return Activator.CreateInstance(type) as IEventListener;
+
+            throw new NotImplementedException();
         }
     }
 }

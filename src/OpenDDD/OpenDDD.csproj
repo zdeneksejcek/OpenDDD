@@ -59,8 +59,8 @@
     <Compile Include="EventDispacher.cs" />
     <Compile Include="EventDispacherDisabler.cs" />
     <Compile Include="EventFinder.cs" />
-    <Compile Include="NonTransactionalEventHandler.cs" />
-    <Compile Include="TransactionalEventHandler.cs" />
+    <Compile Include="INonTransactionalEventHandler.cs" />
+    <Compile Include="ITransactionalEventHandler.cs" />
     <Compile Include="EventQueue\EventQueueFactory.cs" />
     <Compile Include="EventQueue\IEventQueue.cs" />
     <Compile Include="EventQueue\InHttpRequestEventQueue.cs" />
@@ -68,9 +68,10 @@
     <Compile Include="EventRegistry.cs" />
     <Compile Include="IApplicationService.cs" />
     <Compile Include="IDomainService.cs" />
-    <Compile Include="IEventListener.cs" />
+    <Compile Include="IEventHandler.cs" />
     <Compile Include="IoC.cs" />
     <Compile Include="IRepository.cs" />
+    <Compile Include="Messaging\IMessage.cs" />
     <Compile Include="Messaging\IMessageQueue.cs" />
     <Compile Include="Messaging\InMemoryMessageQueue.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

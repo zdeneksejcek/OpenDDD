@@ -1,13 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Reflection;
 
 namespace OpenDDD
 {
     public abstract class BoundedContext
     {
-        public virtual IEnumerable<IEventListener> GetEventListeners()
+        public virtual IEnumerable<Type> GetEventListeners()
         {
-            return new List<IEventListener>();
+            return new List<Type>();
         }
 
         public virtual IEnumerable<Assembly> GetAssembliesForIoCRegistration()

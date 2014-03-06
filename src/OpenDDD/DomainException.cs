@@ -6,9 +6,7 @@ namespace OpenDDD
     {
         protected DomainException()
         {
-            EventDispacher.Raise(new DomainExceptionHasBeenThrown(GetDescription()));
+            //EventDispacher.Raise(new DomainExceptionHasBeenThrown(GetDescription()));
         }
-
-        protected abstract string GetDescription();
     }
 }

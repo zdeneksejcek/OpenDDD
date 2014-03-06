@@ -14,12 +14,8 @@ namespace OpenDDD.Common
 
         private bool IsValidEmailAddress(string emailAddress)
         {
-            return true;
-        }
-
-        protected override int GetHashCodeModifier()
-        {
-            return 57*15;
+            // not implemented
+            throw new NotImplementedException();
         }
 
         public class EmailAddressIsNotValid : Exception

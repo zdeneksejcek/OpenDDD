@@ -2,6 +2,6 @@
 {
     public interface IMessageQueue
     {
-
+        void Enqueue(IMessage message);
     }
 }

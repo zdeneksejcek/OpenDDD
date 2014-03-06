@@ -12,9 +12,7 @@ namespace OpenDDD.Common
 
         public override int GetHashCode()
         {
-            return GetHashCodeModifier()*Value.GetHashCode();
+            return Value.GetHashCode();
         }
-
-        protected abstract int GetHashCodeModifier();
     }
 }
