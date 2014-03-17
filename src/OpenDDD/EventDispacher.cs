@@ -14,7 +14,7 @@ namespace OpenDDD
             if (unitOfWork != null)
                 unitOfWork.RegisterEvent(@event);
             else
-                EventRegistry.Handle(@event);
+                Core.Current.ExecuteEvent(@event);
         }
     }
 }

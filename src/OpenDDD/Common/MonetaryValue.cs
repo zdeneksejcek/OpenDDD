@@ -4,7 +4,7 @@ using System.Diagnostics;
 namespace OpenDDD.Common
 {
     [DebuggerDisplay("{Currency} {Amount}")]
-    public class MonetaryValue : ValueObject
+    public class MonetaryValue : IValueObject
     {
         public decimal Amount { get; private set; }
         public Currency Currency { get; private set; }

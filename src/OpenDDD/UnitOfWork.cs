@@ -12,6 +12,9 @@ namespace OpenDDD
 
         public UnitOfWork()
         {
+            if (Core.Current == null)
+                throw new Exception("OpenDDD UnitOfWork cannot be used without initialized Core");
+
             ParentUnitOfWork = Stack.Peek();
             Stack.Push(this);
         }
@@ -32,7 +35,7 @@ namespace OpenDDD
         private void HandleEvents()
         {
             foreach (var @event in _events)
-                EventRegistry.Handle(@event);
+                Core.Current.ExecuteEvent(@event);
         }
 
         private void RegisterEventsInParentUnitOfWork()

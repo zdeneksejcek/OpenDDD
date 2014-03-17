@@ -1,7 +1,7 @@
 ﻿
 namespace OpenDDD.Common
 {
-    public abstract class GenericValueObject<T> : ValueObject
+    public abstract class GenericValueObject<T> : IValueObject
     {
         protected T Value { get; set; }
 

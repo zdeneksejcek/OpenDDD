@@ -3,7 +3,7 @@ using System;
 
 namespace OpenDDD.Common
 {
-    public class DateTimeUtc : ValueObject
+    public class DateTimeUtc : IValueObject
     {
         public DateTime Value { get; private set; }
 

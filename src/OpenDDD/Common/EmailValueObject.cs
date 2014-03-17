@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text.RegularExpressions;
 
 namespace OpenDDD.Common
 {
@@ -14,8 +15,8 @@ namespace OpenDDD.Common
 
         private bool IsValidEmailAddress(string emailAddress)
         {
-            // not implemented
-            throw new NotImplementedException();
+            return Regex.IsMatch(emailAddress, @"\A[a-z0-9]+([-._][a-z0-9]+)*@([a-z0-9]+(-[a-z0-9]+)*\.)+[a-z]{2,4}\z")
+                   && Regex.IsMatch(emailAddress, @"^(?=.{1,64}@.{4,64}$)(?=.{6,100}$).*");
         }
 
         public class EmailAddressIsNotValid : Exception
