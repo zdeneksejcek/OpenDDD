@@ -78,6 +78,12 @@ namespace OpenDDD
                 throw new ArgumentException(message);
         }
 
+        public static void AssertArgumentRange(decimal value, decimal minimum, decimal maximum, string message)
+        {
+            if (value < minimum || value > maximum)
+                throw new ArgumentException(message);
+        }
+
         public static void AssertArgumentTrue(bool value, string message)
         {
             if (!value)

@@ -45,8 +45,6 @@ namespace OpenDDD
                 InterfacesFinder.FindExternalDependencies(domainAssembliesProvider.GetDomainAssemblies());
 
             ValidateRequiredImplementations(_applicationServices, dependencies);
-
-            
         }
 
         private void ValidateRequiredImplementations(Type[] serviceTypes, Type[] externalDependenciesInterfaces)
@@ -76,7 +74,7 @@ namespace OpenDDD
             Action methodToBeExecuted = () => method.Invoke(serviceType, new object[] { command });
 
             if (ContainsUnitOfWork(method))
-                RunInsideUnitOfWork(() => methodToBeExecuted);
+                RunInsideUnitOfWork(methodToBeExecuted);
             else
                 methodToBeExecuted();
         }
@@ -95,6 +93,16 @@ namespace OpenDDD
                 uow.Commit();
             }
             return result;
+        }
+
+        private static void RunInsideUnitOfWork(Action action)
+        {
+            using (var uow = new UnitOfWork())
+            {
+                action();
+
+                uow.Commit();
+            }
         }
 
         private static bool ContainsUnitOfWork(MethodInfo method)
