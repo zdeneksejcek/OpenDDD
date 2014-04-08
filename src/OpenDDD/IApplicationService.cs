@@ -1,7 +1,6 @@
-﻿
-namespace OpenDDD
+﻿namespace OpenDDD
 {
-    public interface IApplicationService
+    public interface ICommandHandler
     {
     }
 }

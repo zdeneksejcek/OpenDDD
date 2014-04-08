@@ -7,6 +7,11 @@ namespace OpenDDD.Common
     {
         public DateTime Value { get; private set; }
 
+        public static DateTimeUtc Now()
+        {
+            return new DateTimeUtc(DateTime.UtcNow);
+        }
+
         public DateTimeUtc(DateTime value)
         {
             if (value.Kind != DateTimeKind.Utc)

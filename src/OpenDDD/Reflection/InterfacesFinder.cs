@@ -6,9 +6,9 @@ namespace OpenDDD.Reflection
 {
     public class InterfacesFinder
     {
-        public static Type[] FindApplicationServices(Assembly[] assemblies)
+        public static Type[] FindCommandHandlers(Assembly[] assemblies)
         {
-            var interfaceType = typeof (IApplicationService);
+            var interfaceType = typeof (ICommandHandler);
 
             var types = assemblies.SelectMany(s => s.GetTypes()).Where(p=>interfaceType.IsAssignableFrom(p) && p.IsClass);
 

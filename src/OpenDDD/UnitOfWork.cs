@@ -7,6 +7,7 @@ namespace OpenDDD
     public sealed class UnitOfWork : IDisposable
     {
         private readonly Queue<Event> _events = new Queue<Event>();
+        private readonly Queue<Command> _commands = new Queue<Command>();
         private readonly static UnitOfWorkStack Stack = new UnitOfWorkStack();
         private UnitOfWork ParentUnitOfWork { get; set; }
 
@@ -22,14 +23,25 @@ namespace OpenDDD
         public void Commit()
         {
             if (ParentUnitOfWork != null)
+            {
                 RegisterEventsInParentUnitOfWork();
+                RegisterCommandsInParentUnitOfWork();
+            }
             else
+            {
                 HandleEvents();
+                HandleCommands();
+            }
         }
 
         internal void RegisterEvent(Event @event)
         {
             _events.Enqueue(@event);
+        }
+
+        internal void RegisterCommand(Command command)
+        {
+            _commands.Enqueue(command);
         }
 
         private void HandleEvents()
@@ -42,6 +54,18 @@ namespace OpenDDD
         {
             foreach (var @event in _events)
                 ParentUnitOfWork.RegisterEvent(@event);
+        }
+
+        private void HandleCommands()
+        {
+            foreach (var command in _commands)
+                Core.Current.Execute(command);
+        }
+
+        private void RegisterCommandsInParentUnitOfWork()
+        {
+            foreach (var command in _commands)
+                ParentUnitOfWork.RegisterCommand(command);
         }
 
         public void Dispose()

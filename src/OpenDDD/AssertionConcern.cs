@@ -2,6 +2,7 @@
 
 namespace OpenDDD
 {
+    [Serializable]
     public class AssertionConcern
     {
         public static void AssertArgumentEquals(object obj1, object obj2, string message)

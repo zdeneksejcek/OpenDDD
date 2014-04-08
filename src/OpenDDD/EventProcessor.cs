@@ -2,19 +2,19 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using OpenDDD.RemoteEventQueue;
+using OpenDDD.RemoteQueue;
 
 namespace OpenDDD
 {
     public class EventProcessor
     {
-        private IRemoteEventQueue MessageQueue { get; set; }
+        private IRemoteQueue MessageQueue { get; set; }
         private Dictionary<Type, List<Type>> _eventualEventsWithHandlers;
         private Dictionary<Type, List<Type>> _immediateEventsWithHandlers;
         private IHandlerDecisionMaker _handlerDecisionMaker;
         private ITypeInstantiator _instantiator;
 
-        public EventProcessor(IRemoteEventQueue queue, Type[] handlerTypes, IHandlerDecisionMaker handlerDecisionMaker, ITypeInstantiator instantiator)
+        public EventProcessor(IRemoteQueue queue, Type[] handlerTypes, IHandlerDecisionMaker handlerDecisionMaker, ITypeInstantiator instantiator)
         {
             MessageQueue = queue;
             _instantiator = instantiator;

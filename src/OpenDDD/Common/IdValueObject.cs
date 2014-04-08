@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Runtime.InteropServices;
 
 namespace OpenDDD.Common
 {
@@ -13,5 +12,10 @@ namespace OpenDDD.Common
         {
             return obj.Id;
         }
+
+        protected IdValueObject() : base(Guid.NewGuid())
+        {
+        }
+
     }
 }

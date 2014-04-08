@@ -3,7 +3,7 @@ using System.Linq;
 using System.Reflection;
 using OpenDDD.Attributes;
 using OpenDDD.Reflection;
-using OpenDDD.RemoteEventQueue;
+using OpenDDD.RemoteQueue;
 
 namespace OpenDDD
 {
@@ -31,12 +31,12 @@ namespace OpenDDD
             IDomainAssemblyProvider domainAssembliesProvider,
             ITypeInstantiator instantiator,
             IHandlerDecisionMaker handlerDecisionMaker,
-            IRemoteEventQueue messageQueue)
+            IRemoteQueue messageQueue)
         {
             Current = this;
             _instantiator = instantiator;
 
-            _applicationServices = InterfacesFinder.FindApplicationServices(domainAssembliesProvider.GetDomainAssemblies());
+            _applicationServices = InterfacesFinder.FindCommandHandlers(domainAssembliesProvider.GetDomainAssemblies());
             var eventHandlers = EventHandlerFinder.FindEventHandlers(domainAssembliesProvider.GetDomainAssemblies());
 
             _eventProcessor = new EventProcessor(messageQueue, eventHandlers, handlerDecisionMaker, _instantiator);
@@ -82,6 +82,11 @@ namespace OpenDDD
         public void ExecuteEvent(Event @event)
         {
             _eventProcessor.Process(@event);
+        }
+
+        public TService Resolve<TService>()
+        {
+            return _instantiator.Instantiate<TService>();
         }
 
         private static TResult RunInsideUnitOfWork<TResult>(Func<TResult> func)
