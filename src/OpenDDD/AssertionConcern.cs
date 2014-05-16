@@ -32,6 +32,9 @@ namespace OpenDDD
 
         public static void AssertArgumentLength(string value, int minimum, int maximum, string message)
         {
+            if (value == null)
+                throw new ArgumentException(message);
+
             var length = value.Trim().Length;
             if (length < minimum || length > maximum)
                 throw new ArgumentException(message);

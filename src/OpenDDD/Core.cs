@@ -59,24 +59,45 @@ namespace OpenDDD
             var method = new MethodFinder(_applicationServices).FindByCommandAndReturnType<TCommand, TResult>();
             var serviceType = _instantiator.Instantiate(method.DeclaringType);
 
-            Func<TResult> methodToBeExecuted = () => (TResult) method.Invoke(serviceType, new object[] {command});
+            try
+            {
+                Func<TResult> methodToBeExecuted = () => (TResult) method.Invoke(serviceType, new object[] {command});
 
-            if (ContainsUnitOfWork(method))
-                return RunInsideUnitOfWork(methodToBeExecuted);
+                if (ContainsUnitOfWork(method))
+                    return RunInsideUnitOfWork(methodToBeExecuted);
 
-            return methodToBeExecuted();
+                return methodToBeExecuted();
+            }
+            catch (TargetInvocationException ex)
+            {
+                if (ex.InnerException != null)
+                    throw ex.InnerException;
+
+                throw ex;
+            }
         }
 
         public void Execute<TCommand>(TCommand command)
         {
             var method = new MethodFinder(_applicationServices).FindByCommand<TCommand>();
             var serviceType = _instantiator.Instantiate(method.DeclaringType);
-            Action methodToBeExecuted = () => method.Invoke(serviceType, new object[] { command });
 
-            if (ContainsUnitOfWork(method))
-                RunInsideUnitOfWork(methodToBeExecuted);
-            else
-                methodToBeExecuted();
+            try
+            {
+                Action methodToBeExecuted = () => method.Invoke(serviceType, new object[] {command});
+
+                if (ContainsUnitOfWork(method))
+                    RunInsideUnitOfWork(methodToBeExecuted);
+                else
+                    methodToBeExecuted();
+            }
+            catch (TargetInvocationException ex)
+            {
+                if (ex.InnerException != null)
+                    throw ex.InnerException;
+
+                throw ex;
+            }
         }
 
         public void ExecuteEvent(Event @event)
